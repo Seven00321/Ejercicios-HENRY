@@ -12,20 +12,20 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
 // LinkedList o Lista Enlazada
 function LinkedList() {
     // Head
-    this.head = null;   
-}
-
-function Node(value){
+    this.head = null;
+  }
+  
+  function Node(value) {
     // Value y next
     this.value = value;
     this.next = null;
-}
-
-// Metodos
-LinkedList.prototype.add = function(){
+  }
+  
+  // Metodos
+  LinkedList.prototype.add = function(value){
     let newNode = new Node(value);
     let current = this.head;
-
+  
     // Validamos si existe un head en la linkedList, de lo contrario asigna un nuevo Head
     if(!current){
         this.head = newNode;
@@ -35,29 +35,25 @@ LinkedList.prototype.add = function(){
     while(current.next){
         current = current.next;
     }
-
+  
     current.next = newNode;
     return newNode;
-}
-
-LinkedList.prototype.remove = function(){
+  }
+  
+  LinkedList.prototype.remove = function(){
     let current = this.head;
-    if(!current) return null // Cuando no tengo nada
+    if(!current) return null; // Cuando no tengo nada
     if(!current.next){ // Cuando tengo un solo nodo
         this.head = null;
         return current.value;
     }
-
-    while(current.next){
+  
+    while(current.next.next){
         current = current.next;
     }
-
+  
     let aux = current.next.value;
     current.next = null;
     return aux;
-}
-
-
-
-
+  }
 
